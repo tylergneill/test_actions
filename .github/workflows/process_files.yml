@@ -11,13 +11,21 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: List files in the repository
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
       run: |
-        ls ${{ github.workspace }}
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
     - name: Run script
       run: |
-        chmod +x ./process_files.sh
-        ./process_files.sh
+        python process_files.py
