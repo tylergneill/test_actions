@@ -1,0 +1,23 @@
+name: Process Files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+    - name: Run script
+      run: |
+        chmod +x ./process_files.sh
+        ./process_files.sh
