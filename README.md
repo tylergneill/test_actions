@@ -1,2 +1,2 @@
 # test_actions
-testing GitHub actions
+first made to test GitHub Actions. also using to test GitHub Pages
